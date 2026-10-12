@@ -1,0 +1,61 @@
+<div class="graphics">
+    @let graphics = dialogue.graphics();
+    @let image = graphics ? resources.getImageSprite(graphics.src) : undefined;
+    @if (image) {
+        <app-ragged-image [sprite]="image" [show]="true" backgroundColor="#0e0b0e" [options]="{
+            freezeAt: 0.45,
+            duration: 2000,
+            hideDuration: 700,
+            easingPower: 8,
+            originY: 0.47,
+            delay: 25
+        }"/>
+    }
+</div>
+<div class="text" (click)="advance()">
+    <div class="lines-wrapper">
+        <div class="lines">
+            @for (line of lines(); track line; let i = $index) {
+                @let isNarrator = !line.character;
+                @let isPlayer = line.character?.id === 'ГГ';
+                @let headless = isNarrator || lines()[i - 1]?.character?.id === line.character!.id;
+                <div class="line"
+                     [class.line--narrator]="isNarrator"
+                     [class.line--headless]="headless"
+                     [class.line--player]="isPlayer" #line>
+                    @if (!headless) {
+                        <div class="line__header">
+                            @if (line.character!.name) {
+                                <span class="line__title" [style.color]="line.character!.color ?? '#989898'">
+                                        {{ line.character!.name }}
+                                </span>
+                            }
+                        </div>
+                    }
+                    @let quote = '';
+                    <p class="line__content">{{ quote + line.text + quote }}</p>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="controls">
+        @if (options()) {
+            <ol class="options">
+                @for (opt of options(); track opt.index) {
+                    <li class="option" (click)="advance(opt); $event.stopPropagation()">
+                        {{ opt.text }}
+                    </li>
+                }
+            </ol>
+        } @else {
+            @if (!dialogueEnd()) {
+                <button class="controls__advance">Продолжить...</button>
+            } @else {
+                <button amazing-button class="controls__end" (click)="end()">
+                    Продолжить
+                    <fa-icon [icon]="faCaretRight"/>
+                </button>
+            }
+        }
+    </div>
+</div>

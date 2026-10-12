@@ -1,0 +1,52 @@
+:host {
+    display: block;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    will-change: opacity;
+}
+
+.layer--active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.layer--green { z-index: 1; background-color: #f0f9f0; }
+.layer--blue  { z-index: 2; background-color: #f0f0f9; }
+
+.layer--active.layer--green { z-index: 3; }
+.layer--active.layer--blue  { z-index: 4; }
+
+.router-host {
+    position: absolute;
+    visibility: hidden;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.overlay-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    pointer-events: none;
+    display: block;
+}
+
+.overlay-layer:not(:empty) {
+    pointer-events: auto;
+}
+

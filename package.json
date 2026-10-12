@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -17,13 +17,21 @@
     "@angular/forms": "^22.2.0",
     "@angular/platform-browser": "^22.2.0",
     "@angular/router": "^22.2.0",
+    "@fortawesome/angular-fontawesome": "^5.1.0",
+    "@fortawesome/free-solid-svg-icons": "^7.3.0",
+    "maplibre-gl": "^6.13.0",
+    "maplibre-transition": "^3.0.0",
+    "pmtiles": "^4.5.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
+    "three": "^0.186.1",
+    "tslib": "^2.3.0",
+    "yarn-bound": "^0.5.5"
   },
   "devDependencies": {
     "@angular/build": "^22.2.0",
     "@angular/cli": "^22.2.0",
     "@angular/compiler-cli": "^22.2.0",
+    "@types/three": "^0.186.0",
     "jsdom": "^30.0.0",
     "prettier": "^3.8.1",
     "typescript": "~6.0.2",

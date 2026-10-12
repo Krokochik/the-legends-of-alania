@@ -1,0 +1,12 @@
+@let s = $any(sprite);
+@switch (sprite!.type) {
+    @case ('html') {
+        <div [outerHTML]="sanitizer.bypassSecurityTrustHtml($any(s!.content))"></div>
+    }
+    @case ('image') {
+        <img [ngSrc]="s!.url" [width]="width()" [height]="height()" [style.filter]="filter" alt>
+    }
+    @case ('font-awesome') {
+        <fa-icon [icon]="s!.content" [style.font-size]="height()" [style.color]="color() ?? 'inherit'" />
+    }
+}

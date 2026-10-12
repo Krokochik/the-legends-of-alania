@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Похоже, что вы...</h1>
+
+    <div class="row">
+        <div class="description">
+            <app-sprite src="fancy_divider" [width]="450" [height]="23" color="#1A1A1C" />
+            {{ characters.players[activeIndex()].description }}
+            <app-sprite src="fancy_divider" [width]="450" [height]="23" color="#1A1A1C" />
+        </div>
+        <div class="cylinder-wrapper">
+            <div class="cylinder" [style.--deviation]="Math.round((characters.players.length - 1) / 2) - activeIndex()">
+                @for (character of characters.players; track character.id; let index = $index) {
+                    <button class="label" [class.active]="activeId() == character.id" (click)="select(character.id)">
+                        <app-sprite [src]="character.labelSprite" />
+                    </button>
+                }
+            </div>
+        </div>
+        <div class="arrow" #arrow>
+            <app-sprite src="two_arrows_to_left" />
+        </div>
+    </div>
+
+    <button class="confirm" (click)="confirm()">
+        Подтвердить
+        <app-sprite src="fa_check" [height]="28" color="#FFF6B2" />
+    </button>
+
+</div>
+
+

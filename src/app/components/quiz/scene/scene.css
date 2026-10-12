@@ -1,0 +1,125 @@
+:host {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    background-color: #111114;
+    color: #fff;
+
+    &.loading {
+        pointer-events: none;
+    }
+}
+
+.press, .vignette {
+    z-index: 10;
+}
+
+.press {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.press__top, .press__bottom {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 60%;
+    background-color: #111114;
+    will-change: transform;
+}
+
+.press__top {
+    align-items: flex-end;
+    transform: translateY(-200%);
+    bottom: 0;
+    z-index: 2;
+}
+
+.press__bottom {
+    align-items: flex-start;
+    transform: translateY(200%);
+    top: 0;
+}
+
+.vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.vignette__overlay {
+    pointer-events: none;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+
+    width: 500vw;
+    height: 500vh;
+
+    --radius: calc((450px + max(100vw, 100vh)) / 2);
+    --border-width: 3px;
+    --border-color: #FDFF9D;
+    --bg-color: #111114;
+
+    background-image: radial-gradient(
+        circle at 50% 50%,
+        transparent calc(var(--radius) - 1px),
+        var(--border-color) var(--radius),
+        var(--border-color) calc(var(--radius) + var(--border-width)),
+        var(--bg-color) calc(var(--radius) + var(--border-width) + 1px)
+    );
+
+    -webkit-mask-image: radial-gradient(
+        circle at 50% 50%,
+        transparent calc(var(--radius) - 1px),
+        black var(--radius)
+    );
+    mask-image: radial-gradient(
+        circle at 50% 50%,
+        transparent calc(var(--radius) - 1px),
+        black var(--radius)
+    );
+}
+
+.vignette__rects > * {
+    will-change: transform;
+    pointer-events: auto;
+
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #111114;
+}
+
+.vignette__rects > *:nth-child(1) {
+    transform: translateY(-200%);
+    bottom: 0;
+}
+
+.vignette__rects > *:nth-child(2) {
+    transform: translateY(200%);
+    top: 0;
+}
+
+.vignette__rects > *:nth-child(3) {
+    transform: translateX(200%);
+    left: 0;
+}
+
+.vignette__rects > *:nth-child(4) {
+    transform: translateX(-200%);
+    right: 0;
+}

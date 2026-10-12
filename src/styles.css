@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: inherit;
+    outline: none;
+}
+
+html, body {
+    height: 100vh;
+    width: 100vw;
+    background-color: #111114;
+}
+
+@font-face {
+    font-family: 'Kelly Slab';
+    src: url('/fonts/KellySlab-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'LXGW Marker Gothic';
+    src: url('/fonts/LXGWMarkerGothic-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'LXGW WenKai Mono TC';
+    src: url('/fonts/LXGWWenKaiMonoTC-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+
+:root, button, input, select, textarea {
+    font-family: "LXGW Marker Gothic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1, h2, h3 {
+    font-family: "Kelly Slab", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+app-sprite {
+    box-sizing: content-box;
+}

@@ -1,0 +1,14 @@
+@let question = quiz.question();
+
+<div class="container">
+    <h1>{{ question.text }}</h1>
+
+    <div class="options" [style.gap]="question.options.length <= 3 ? '255px' : '170px'">
+        @for (option of question.options; track option.text) {
+            <button class="option" (click)="select(option)">
+                <app-sprite class="option__sprite" [src]="option.sprite" [width]="150" [height]="150" />
+                <span class="option__text">{{ option.text }}</span>
+            </button>
+        }
+    </div>
+</div>

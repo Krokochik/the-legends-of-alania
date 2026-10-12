@@ -1,0 +1,20 @@
+<div class="press">
+    <div class="press__top" #pressTop>
+        <app-sprite src="fancy_divider" [width]="width - 10" [height]="23" />
+    </div>
+    <div class="press__bottom" #pressBottom>
+        <app-sprite src="fancy_divider" [width]="width - 10" [height]="23" />
+    </div>
+</div>
+
+<div class="vignette" #vignette>
+    <div #vignetteRects class="vignette__rects">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div #vignetteOverlay class="vignette__overlay"></div>
+</div>
+
+<router-outlet/>
