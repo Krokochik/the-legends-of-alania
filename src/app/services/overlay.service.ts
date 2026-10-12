@@ -40,18 +40,26 @@ export class OverlayService {
 
     async show<T>(
         component: Type<T>,
-        opts?: { injector?: Injector; zIndex?: number; skipTransition?: boolean },
+        opts?: {
+            injector?: Injector;
+            zIndex?: number;
+            skipTransition?: boolean;
+            componentName: string;
+        },
     ): Promise<ComponentRef<T>> {
         if (!this.container) throw new Error();
 
-        const existing = this.overlays.find(o => o.componentType === component);
+        const existing = this.overlays.find(
+            o => o.componentType === component,
+        );
+
         if (existing) {
             this.bringToTop(existing, opts?.zIndex);
             return existing.ref as ComponentRef<T>;
         }
 
-        const componentName = component.name || 'Anonymous';
-        const tag = `[overlay${componentName}]`;
+        const componentName = opts?.componentName ?? 'UnknownOverlay';
+        const tag = `[overlay_${componentName}]`;
 
         const zIndex = this.assignZIndex(opts?.zIndex);
 

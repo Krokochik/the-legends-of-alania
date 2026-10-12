@@ -74,7 +74,9 @@ export class GameService {
 
     setupDialogueListener() {
         document.addEventListener(DialogueEndEvent.TYPE, async () => {
-            await this.overlay.show(LoadingOverlay);
+            await this.overlay.show(LoadingOverlay, {
+                componentName: 'LoadingOverlay',
+            });
             await wait(this.getOverlayTransitionDuration('LoadingOverlay'));
 
             await this.router.navigate(['game/map']);
@@ -130,7 +132,9 @@ export class GameService {
         if (!followRout) this.map.cameraTarget.set({});
         await waitFor(MapAnimationEndEvent.TYPE);
         await wait(1500);
-        await this.overlay.show(LoadingOverlay);
+        await this.overlay.show(LoadingOverlay, {
+            componentName: 'LoadingOverlay',
+        });
         await wait(this.getOverlayTransitionDuration('LoadingOverlay'));
         this.savePlotNode();
         await this.openDialogue();
@@ -166,7 +170,9 @@ export class GameService {
         const start = Date.now();
         const goto = () => this.router.navigate(['game/dialogue']);
 
-        await this.overlay.show(LoadingOverlay);
+        await this.overlay.show(LoadingOverlay, {
+            componentName: 'LoadingOverlay',
+        });
 
         await this.dialogue!.waitFor();
         await wait(Date.now() - start + 1000);
@@ -180,7 +186,9 @@ export class GameService {
         await this.openDialogue();
         await waitFor(DialogueEndEvent.TYPE);
 
-        const overlay = await this.overlay.show(IntroOverlay);
+        const overlay = await this.overlay.show(IntroOverlay, {
+            componentName: 'IntroOverlay',
+        });
         await wait(this.getOverlayTransitionDuration('IntroOverlay'));
 
         await this.router.navigate(['game/map']);
@@ -221,7 +229,9 @@ export class GameService {
     }
 
     async openMap() {
-        await this.overlay.show(LoadingOverlay);
+        await this.overlay.show(LoadingOverlay, {
+            componentName: 'LoadingOverlay',
+        });
         oneTimeListener(MapLoadedEvent.TYPE, () => this.overlay.hide(LoadingOverlay));
         await this.router.navigate(['game/map']);
     }

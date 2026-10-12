@@ -58,7 +58,7 @@ export class App implements OnInit {
         const start = Date.now();
 
         this.overlay.registerContainer(this.layerOverlay());
-        this.overlay.show(LoadingOverlay, {skipTransition: true});
+        this.overlay.show(LoadingOverlay, {skipTransition: true, componentName: 'LoadingOverlay'});
         this.appRef.whenStable().then(() => {
             setTimeout(() => this.overlay.hide(LoadingOverlay), Math.max(0, Date.now() - start + 500));
         });
