@@ -16,7 +16,7 @@ html, body {
 
 @font-face {
     font-family: 'Kelly Slab';
-    src: url('/fonts/KellySlab-Regular.ttf') format('truetype');
+    src: url('/the-legends-of-alania/build/browser/fonts/KellySlab-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -24,7 +24,7 @@ html, body {
 
 @font-face {
     font-family: 'LXGW Marker Gothic';
-    src: url('/fonts/LXGWMarkerGothic-Regular.ttf') format('truetype');
+    src: url('/the-legends-of-alania/build/browser/fonts/LXGWMarkerGothic-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -32,7 +32,7 @@ html, body {
 
 @font-face {
     font-family: 'LXGW WenKai Mono TC';
-    src: url('/fonts/LXGWWenKaiMonoTC-Regular.ttf') format('truetype');
+    src: url('/the-legends-of-alania/build/browser/fonts/LXGWWenKaiMonoTC-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: block;
