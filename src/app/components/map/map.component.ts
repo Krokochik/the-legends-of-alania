@@ -99,7 +99,7 @@ export class MapComponent implements OnInit, OnDestroy {
         const protocol = new Protocol();
         addProtocol('pmtiles', protocol.tile);
         setWorkerCount(8);
-        setWorkerUrl(new URL('maplibre-gl/dist/maplibre-gl-worker.mjs', import.meta.url).toString());
+        setWorkerUrl(new URL('maplibre-gl-worker.mjs', document.baseURI).href);
 
         const size = await this.loadImageSize('map.png');
 
